@@ -25,7 +25,9 @@ public class Food
     [Display(Name = "Precio")]
     public int Price { get; set; }
 
-    [Display(Name = "Categoría")]
-    public FoodType Type { get; set; }
+    public int FoodTypeId { get; set; }
+
+    public virtual FoodType FoodType { get; set; }
+
     public virtual List<Restaurant> Restaurants { get; set; }
 }

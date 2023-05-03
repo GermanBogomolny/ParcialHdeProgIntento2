@@ -16,13 +16,20 @@ namespace Stix.Data
 
         public DbSet<Stix.Models.Food> Food { get; set; } = default!;
         public DbSet<Stix.Models.Restaurant> Restaurant { get; set; } = default!;
+        public DbSet<Stix.Models.FoodType> FoodType { get; set; } = default!;
 
-        /*protected override void OnModelCreating (ModelBuilder modelbuilder)
+        protected override void OnModelCreating (ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<Food>()
             .HasMany(p => p.Restaurants)
-            .WithOne(p => p.Food)
-            .HasForeignKey(p => p.Type);
-        }*/
+            .WithMany(p => p.Foods)
+            .UsingEntity("RestaurantFood")
+            .HasOne(p => p.FoodType)
+            .WithMany(p=> p.Foods)
+            .HasForeignKey(p => p.FoodTypeId)
+            ;
+            
+             
+        }
     }
 }

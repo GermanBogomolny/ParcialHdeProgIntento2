@@ -31,6 +31,6 @@ public class Restaurant
     public string Provincia { get; set; }
 
     [Display(Name = "Menú del restaurant")]
-    public int FoodId { get; set; }
-    public virtual Food Food { get; set; }
+    
+    public virtual List<Food> Foods { get; set; }
 }

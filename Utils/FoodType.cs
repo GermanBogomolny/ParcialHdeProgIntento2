@@ -1,6 +1,6 @@
 namespace Stix.Utils;
 
-public enum FoodType
+public enum FoodTypeEnum
 {
     Starter,
     Sushi,
