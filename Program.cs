@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Stix.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<RestaurantContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("RestaurantContext") ?? throw new InvalidOperationException("Connection string 'RestaurantContext' not found.")));
+builder.Services.AddDbContext<FoodContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("FoodContext") ?? throw new InvalidOperationException("Connection string 'FoodContext' not found.")));
 builder.Services.AddDbContext<FoodContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("FoodContext") ?? throw new InvalidOperationException("Connection string 'FoodContext' not found.")));
 

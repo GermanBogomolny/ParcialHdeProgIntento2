@@ -14,9 +14,9 @@ namespace Stix.Controllers
 {
     public class RestaurantController : Controller
     {
-        private readonly RestaurantContext _context;
+        private readonly FoodContext _context;
 
-        public RestaurantController(RestaurantContext context)
+        public RestaurantController(FoodContext context)
         {
             _context = context;
         }
@@ -36,7 +36,7 @@ namespace Stix.Controllers
 
               return _context.Restaurant != null ? 
                           View(model) :
-                          Problem("Entity set 'RestaurantContext.Restaurant'  is null.");
+                          Problem("Entity set 'FoodContext.Restaurant'  is null.");
         }
 
         // GET: Restaurant/Details/5
@@ -68,7 +68,7 @@ namespace Stix.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RestaurantName,Street,Number,Neighbourhood,Town,Provincia,FoodId")] Restaurant restaurant)
+        public async Task<IActionResult> Create([Bind("Id,RestaurantName,Street,Number,Neighbourhood,Town,Provincia")] Restaurant restaurant)
         {
             _context.Add(restaurant);
             await _context.SaveChangesAsync();
@@ -96,7 +96,7 @@ namespace Stix.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RestaurantName,Street,Number,Neighbourhood,Town,Provincia,FoodId")] Restaurant restaurant)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RestaurantName,Street,Number,Neighbourhood,Town,Provincia")] Restaurant restaurant)
         {
             if (id != restaurant.Id)
             {
@@ -151,7 +151,7 @@ namespace Stix.Controllers
         {
             if (_context.Restaurant == null)
             {
-                return Problem("Entity set 'RestaurantContext.Restaurant'  is null.");
+                return Problem("Entity set 'FoodContext.Restaurant'  is null.");
             }
             var restaurant = await _context.Restaurant.FindAsync(id);
             if (restaurant != null)

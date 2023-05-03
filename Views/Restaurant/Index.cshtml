@@ -38,9 +38,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Restaurants[0].Provincia)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].FoodId)
-            </th>
+            
         </tr>
     </thead>
     <tbody>
@@ -65,10 +63,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Provincia)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoodId)
-                    
-                </td>
+               
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |

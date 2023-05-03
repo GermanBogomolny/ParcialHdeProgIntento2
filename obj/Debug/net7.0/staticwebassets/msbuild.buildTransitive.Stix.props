@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\Stix.props" />
+  <Import Project="../buildMultiTargeting/Stix.props" />
 </Project>

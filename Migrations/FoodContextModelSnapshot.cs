@@ -16,6 +16,21 @@ namespace Stix.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
 
+            modelBuilder.Entity("RestaurantFood", b =>
+                {
+                    b.Property<int>("FoodsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RestaurantsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("FoodsId", "RestaurantsId");
+
+                    b.HasIndex("RestaurantsId");
+
+                    b.ToTable("RestaurantFood");
+                });
+
             modelBuilder.Entity("Stix.Models.Food", b =>
                 {
                     b.Property<int>("Id")
@@ -53,9 +68,6 @@ namespace Stix.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("FoodId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Neighbourhood")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -79,25 +91,24 @@ namespace Stix.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("FoodId");
 
                     b.ToTable("Restaurant");
                 });
 
-            modelBuilder.Entity("Stix.Models.Restaurant", b =>
+            modelBuilder.Entity("RestaurantFood", b =>
                 {
-                    b.HasOne("Stix.Models.Food", "Food")
+                    b.HasOne("Stix.Models.Food", null)
                         .WithMany()
-                        .HasForeignKey("FoodId")
+                        .HasForeignKey("FoodsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Food");
+                    b.HasOne("Stix.Models.Restaurant", null)
+                        .WithMany()
+                        .HasForeignKey("RestaurantsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
